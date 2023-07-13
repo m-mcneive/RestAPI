@@ -6,10 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 public class Entry {
-    
-    @Getter
-    @Setter
-    private int id;
 
     @Getter
     @Setter
@@ -23,8 +19,7 @@ public class Entry {
     @Setter
     private LocalDate date;
 
-    public Entry(int id, String name, double price, LocalDate date) {
-        this.id = id;
+    public Entry(String name, double price, LocalDate date) {
         this.name = name;
         this.price = price;
         this.date = date;
