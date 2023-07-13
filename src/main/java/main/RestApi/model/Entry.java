@@ -1,9 +1,11 @@
 package main.RestApi.model;
 
+import java.time.LocalDate;
+
 import lombok.Getter;
 import lombok.Setter;
 
-public class User {
+public class Entry {
     
     @Getter
     @Setter
@@ -15,12 +17,17 @@ public class User {
 
     @Getter
     @Setter
-    private int age;
+    private double price;
 
-    public User(int id, String name, int age) {
+    @Getter
+    @Setter
+    private LocalDate date;
+
+    public Entry(int id, String name, double price, LocalDate date) {
         this.id = id;
         this.name = name;
-        this.age = age;
+        this.price = price;
+        this.date = date;
     }
     
 }
