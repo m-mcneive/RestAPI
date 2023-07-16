@@ -2,6 +2,7 @@ package main.RestApi.controllers;
 import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,15 +25,13 @@ public class RestAPIController {
         return entryService.getEntry(id);
     }
 
-        @PostMapping("/EnterDetails")
-
+    @PostMapping("/api/insert")
     private void insert(@RequestBody Entry ob) {
         entryService.add(ob);
     }
 
-
-    @GetMapping("/api/hello")
-    public String print() {
-        return "Hello World!";
+    @DeleteMapping("/api/delete/{id}")
+    public void delete(@PathVariable int id) {
+        entryService.delete(id);
     }
 }

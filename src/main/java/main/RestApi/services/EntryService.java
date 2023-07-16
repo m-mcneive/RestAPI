@@ -8,7 +8,6 @@ import main.RestApi.model.Entry;
 public class EntryService {
     
     private HashMap<Integer,Entry> entries;
-    private Integer id = 1;
     
 
     public EntryService() {
@@ -23,7 +22,16 @@ public class EntryService {
     }
 
     public void add(Entry entry) {
-        entries.put(id, entry);
-        id++;
+        entries.put(entry.getId(), entry);
+        System.out.println("Added new entry");
+    }
+
+    public String delete(int id) {
+        if(entries.containsKey(id)) {
+            entries.remove(id);
+            return "Removed entry " + id;
+        }
+
+        return "Entry not found";
     }
 }
