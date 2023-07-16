@@ -26,12 +26,12 @@ public class RestAPIController {
     }
 
     @PostMapping("/api/insert")
-    private void insert(@RequestBody Entry ob) {
-        entryService.add(ob);
+    private String insert(@RequestBody Entry ob) {
+        return entryService.add(ob);
     }
 
     @DeleteMapping("/api/delete/{id}")
-    public void delete(@PathVariable int id) {
-        entryService.delete(id);
+    public String delete(@PathVariable int id) {
+        return entryService.delete(id);
     }
 }

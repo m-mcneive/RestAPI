@@ -21,9 +21,12 @@ public class EntryService {
         return null;
     }
 
-    public void add(Entry entry) {
-        entries.put(entry.getId(), entry);
-        System.out.println("Added new entry");
+    public String add(Entry entry) {
+        Entry prev = entries.put(entry.getId(), entry);
+        if(prev == null) {
+            return "Entry added";
+        }
+        return String.format("Replaced previous entry at %s for %s", prev.getName(), prev.getPrice());
     }
 
     public String delete(int id) {
