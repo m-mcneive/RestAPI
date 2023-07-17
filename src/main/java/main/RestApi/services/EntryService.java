@@ -14,6 +14,10 @@ public class EntryService {
         entries = new HashMap<>();
     }
 
+    public void clear() {
+        entries.clear();
+    }
+
     public Entry getEntry(int id) {
         if(entries.containsKey(id)) {
             return entries.get(id);

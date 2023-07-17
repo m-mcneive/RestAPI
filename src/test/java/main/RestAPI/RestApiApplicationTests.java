@@ -3,7 +3,6 @@ package main.RestAPI;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestClassOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -42,6 +41,7 @@ class RestApiApplicationTests {
 		assertEquals(10.56, entryService.getEntry(3).getPrice());
 		assertEquals("Amazon", entryService.getEntry(4).getName());
 		assertEquals(48.63, entryService.getEntry(4).getPrice());
+		entryService.clear();
 	}
 
 	@Test
@@ -53,6 +53,7 @@ class RestApiApplicationTests {
 		}
 
 		assertEquals(total, entryService.getTotalPrice());
+		entryService.clear();
 	}
 
 	@Test
@@ -60,9 +61,20 @@ class RestApiApplicationTests {
 		loadEntries();
 		assertEquals("Amazon", entryService.getEntry(4).getName());
 		assertEquals(48.63, entryService.getEntry(4).getPrice());
-		
+
 		entryService.delete(4);
 		assertEquals(null, entryService.getEntry(4));
+		entryService.clear();
+	}
+
+	@Test
+	void testAdd() {
+		entryService.clear();
+		assertEquals(null, entryService.getEntry(1));
+		
+		entryService.add(new Entry(1, "Osmium", 7.5));
+		assertEquals("Osmium", entryService.getEntry(1).getName());
+		assertEquals(7.5, entryService.getEntry(1).getPrice());
 	}
 
 	
