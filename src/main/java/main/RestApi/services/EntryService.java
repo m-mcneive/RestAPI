@@ -37,4 +37,13 @@ public class EntryService {
 
         return "Entry not found";
     }
+
+    public double getTotalPrice() {
+        double total = 0;
+        for(Entry e: entries.values()) {
+            total += e.getPrice();
+        }
+        return total;
+    }
+    
 }
